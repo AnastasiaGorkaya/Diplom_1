@@ -9,21 +9,23 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class IngredientTypeTest {
     private final IngredientType ingredientType;
+    private final String type;
 
-    public IngredientTypeTest(IngredientType ingredientType) {
+    public IngredientTypeTest(IngredientType ingredientType, String type) {
         this.ingredientType = ingredientType;
+        this.type = type;
     }
 
     @Parameterized.Parameters
     public static Object[][] createIngredientTypeData() {
         return new Object[][] {
-                {IngredientType.SAUCE},
-                {IngredientType.FILLING},
+                {IngredientType.SAUCE, "SAUCE"},
+                {IngredientType.FILLING, "FILLING"},
         };
     }
 
     @Test
     public void checkIngredientType() {
-        assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+        assertEquals(ingredientType, IngredientType.valueOf(type));
     }
 }
